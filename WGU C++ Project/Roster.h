@@ -24,7 +24,7 @@ public:
 
 	void printAll();
 	void printInvalidEmails();
-protected:
+	
 	Student** getStudents() { return students; };
 	void setStudents(Student** newStudents) { students = newStudents; };
 private:

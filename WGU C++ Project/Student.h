@@ -9,9 +9,8 @@ public:
 	Student();
 	// Deconstructor
 	~Student();
-protected:
 	// Our accessors for integer variables
-	int getStudentId() { return id; };
+	std::string getStudentId() { return id; };
 	int getStudentAge() { return age; };
 	int* getNumberOfDaysToComplete() { return numberOfDaysToComplete; };
 
@@ -23,7 +22,7 @@ protected:
 	std::string* getStudentData() { return studentData; };
 
 	// Our mutators for integer variables
-	void setStudentId(int studentId) { id = studentId; };
+	void setStudentId(std::string studentId) { id = studentId; };
 	void setStudentAge(int studentAge) { age = studentAge; };
 	//void setNumberOfDaysToComplete(int[5] updatedNumberOfDays) { numberOfDaysToComplete = updatedNumberOfDays; };
 
@@ -34,7 +33,7 @@ protected:
 	// Our mutators for string variables
 private:
 	// Declare our integer variables
-	int id;
+	std::string id;
 	int age;
 	int numberOfDaysToComplete[5];
 
