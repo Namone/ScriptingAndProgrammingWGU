@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include "Degree.h";
+#include "Degree.h"
 
 class Student
 {

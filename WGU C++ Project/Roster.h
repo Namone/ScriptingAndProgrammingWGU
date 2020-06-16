@@ -8,7 +8,7 @@ public:
 	~Roster();
 
 	void add(
-		std::string studentID, 
+		std::string studentId, 
 		std::string firstName, 
 		std::string lastName, 
 		std::string emailAddress, 
