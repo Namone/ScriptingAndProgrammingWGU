@@ -31,12 +31,18 @@ public:
 	// void printByDegreeProgram(DegreeProgram degreeProgram);
 	// void printAverageDaysInCourse(std::string studentId);
 
-	// void printAll();
-	// void printInvalidEmails();
+	void printAll() { 
+		Student* studentData = this->getStudents();
+		int total = sizeof(studentData);
+		for(int s = 0; s <= total; s = s + 1) {
+			std::cout << studentData[s].getStudentFirstName() << std::endl;
+		}
+	};
+	void printInvalidEmails();
 	
-	// Student** getStudents() { return students; };
-	// void setStudents(Student** newStudents) { students = newStudents; };
-private:
-	// Student** students = new Student*[5];
+	Student* getStudents() { return students; };
+	void setStudents(Student* newStudents) { students = newStudents; };
+protected:
+	Student* students;
 };
 

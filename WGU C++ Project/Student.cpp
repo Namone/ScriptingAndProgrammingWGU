@@ -12,7 +12,7 @@ Student::~Student() {
 
 std::string Student::getStudentId() { return id; };
 int Student::getStudentAge() { return age; };
-int*  Student::getNumberOfDaysToComplete() { return numberOfDaysToComplete; };
+int* Student::getNumberOfDaysToComplete() { return numberOfDaysToComplete; };
 
 // Our accessors for our string variables
 std::string Student::getStudentFirstName() { return firstName; };
@@ -23,7 +23,7 @@ std::string* Student::getStudentData() { return studentData; };
 
 // Our mutators for integer variables
 void Student::setStudentId(std::string studentId) { id = studentId; };
-void Student::setStudentAge(std::string studentAge) { age = studentAge; };
+void Student::setStudentAge(int studentAge) { age = studentAge; };
 //void setNumberOfDaysToComplete(int[5] updatedNumberOfDays) { numberOfDaysToComplete = updatedNumberOfDays; };
 
 void Student::setStudentFirstName(std::string studentFirstName) { firstName = studentFirstName; };
