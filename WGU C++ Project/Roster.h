@@ -4,9 +4,6 @@
 class Roster
 {
 public:
-	Roster();
-	~Roster();
-
 	void add(
 		std::string studentId, 
 		std::string firstName, 
@@ -17,17 +14,29 @@ public:
 		int daysInCourse2, 
 		int daysInCourse3, 
 		DegreeProgram degreeProgram
-	);
-	void remove(std::string studentId);
-	void printByDegreeProgram(DegreeProgram degreeProgram);
-	void printAverageDaysInCourse(std::string studentId);
+	) {
+		std::cout << "In add() function!";
+		// First, create our new student object.
+		Student *student = new Student();
+		student->setStudentId(studentId);
+		student->setStudentFirstName(firstName);
+		student->setStudentLastName(lastName);
+		student->setStudentAge(age);
+		student->setEmailAddress(emailAddress);
+		student->setDegreeProgram(degreeProgram);
 
-	void printAll();
-	void printInvalidEmails();
+		std::cout << "Adding student with email: " << student->getEmailAddress() << std::endl;
+	}
+	// void remove(std::string studentId);
+	// void printByDegreeProgram(DegreeProgram degreeProgram);
+	// void printAverageDaysInCourse(std::string studentId);
+
+	// void printAll();
+	// void printInvalidEmails();
 	
-	Student** getStudents() { return students; };
-	void setStudents(Student** newStudents) { students = newStudents; };
+	// Student** getStudents() { return students; };
+	// void setStudents(Student** newStudents) { students = newStudents; };
 private:
-	Student** students = new Student*[5];
+	// Student** students = new Student*[5];
 };
 
