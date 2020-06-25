@@ -1,7 +1,7 @@
 #pragma once
 #include <list>
 #include "Student.h"
-
+#include "Util.h"
 // Create a Roster class (roster.cpp) by doing the following:
 // 1.  Create an array of pointers, classRosterArray, to hold the data provided in the “studentData Table.”
 // 2.  Create a student object for each student in the data table and populate classRosterArray.
@@ -74,28 +74,16 @@ public:
 		return;
 	};
 	void printInvalidEmails() {
-		Student student;
-		std::string* studentData = student.getStudentData();
-		for (int i = 0; i <= sizeof(studentData); i = i + 1) {
-			bool isValid = this->isValidEmail(studentData[i]);
-			std::cout << studentData[i] << std::endl;
-			std::cout << isValid << std::endl;
-		}
-	};
-	bool isValidEmail(std::string input) {
-		size_t at = input.find('@');
-		if (at == std::string::npos) {
-			std::cout << "Missing @ symbol\n";
-			return false;
-		}
+		std::list<Student>::iterator currentStudent;
+		for(currentStudent = classRosterArray.begin(); currentStudent != classRosterArray.end(); currentStudent++) {		
+			bool isValid = isValidEmail(currentStudent->getEmailAddress());
+			if(isValid) {
+				continue;
+			}
 
-		size_t dot = input.find('.', at + 1);
-		if (dot == std::string::npos) {
-			std::cout << "Missing . symbol after @\n";
-			return false;
+			std::cout << currentStudent->getEmailAddress() << std::endl;
 		}
-
-		return true;
+		return;
 	};
 	
 	std::list<Student> getStudents() { return classRosterArray; };
