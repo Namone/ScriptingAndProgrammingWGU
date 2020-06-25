@@ -42,24 +42,24 @@ public:
 		DegreeProgram degreeProgram
 	) {
 		// First, create our new student object.
-		Student *student = new Student();
-		student->setStudentId(studentId);
-		student->setStudentFirstName(firstName);
-		student->setStudentLastName(lastName);
-		student->setStudentAge(age);
-		student->setEmailAddress(emailAddress);
-		student->setDegreeProgram(degreeProgram);
+		Student student;
+		student.setStudentId(studentId);
+		student.setStudentFirstName(firstName);
+		student.setStudentLastName(lastName);
+		student.setStudentAge(age);
+		student.setEmailAddress(emailAddress);
+		student.setDegreeProgram(degreeProgram);
 
-		std::cout << "Adding student with email: " << student->getEmailAddress() << std::endl;
+		std::cout << "Adding student with email: " << student.getEmailAddress() << std::endl;
 		classRosterArray.push_back(student);
 
 		std::cout << "Added student." << std::endl;
 
 		std::list<Student> students = getStudents();
-		std::list<Student>::iterator student;
-		for (student = students.begin(); student != students.end(); student++) {
+		std::list<Student>::iterator studentIterator;
+		for (studentIterator = students.begin(); studentIterator != students.end(); studentIterator++) {
 			//Print the name of our newly added student.
-			std::cout << student->getStudentFirstName() << std::endl;
+			std::cout << studentIterator->getStudentFirstName() << std::endl;
 		}
 	};
 	//void remove(std::string studentId) {
