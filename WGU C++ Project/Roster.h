@@ -41,22 +41,43 @@ public:
 
 		std::cout << "Adding student with email: " << student->getEmailAddress() << std::endl;
 	}
-	// void remove(std::string studentId);
+	// void remove(std::string);
 	// void printByDegreeProgram(DegreeProgram degreeProgram);
 	// void printAverageDaysInCourse(std::string studentId);
-
 	void printAll() { 
-		Student* studentData = this->getStudents();
-		int total = sizeof(studentData);
-		for(int s = 0; s <= total; s = s + 1) {
-			std::cout << studentData[s].getStudentFirstName() << std::endl;
+		Student student;
+		std::string* studentData = student.getStudentData();
+		for(int i = 0; i <= sizeof(studentData); i = i + 1) {
+			std::cout << studentData[i] << std::endl;
 		}
 	};
-	void printInvalidEmails();
+	void printInvalidEmails() {
+		Student student;
+		std::string* studentData = student.getStudentData();
+		for(int i = 0; i <= sizeof(studentData); i = i + 1) {
+			bool isValid = this->isValidEmail(studentData[i]);
+			std::cout << isValid << std::endl;
+		}
+	};
+	bool isValidEmail(std::string input) {
+		size_t at = input.find('@');
+		if (at == std::string::npos) {
+			std::cout << "Missing @ symbol\n";
+			return false;
+		}
+
+		size_t dot = input.find('.', at + 1);
+		if (dot == std::string::npos) {
+			std::cout << "Missing . symbol after @\n";
+			return false;
+		}
+
+		return true;
+	};
 	
-	Student* getStudents() { return students; };
-	void setStudents(Student* newStudents) { students = newStudents; };
+	Student* getStudents() { return classRosterArray; };
+	void setStudents(Student* newStudents) { classRosterArray = newStudents; };
 protected:
-	Student* students;
+	Student* classRosterArray;
 };
 

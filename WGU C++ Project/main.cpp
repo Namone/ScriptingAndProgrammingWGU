@@ -19,21 +19,17 @@
 // 5.  Implement the destructor to release the memory that was allocated dynamically in Roster.
 
 int main() {
-  Roster classRoster;
-  std::cout << "Welcome to student Rosterizer!" << std::endl;
+  std::cout << "Scripting and Programming - Applications – C867" << std::endl;
+  std::cout << "C++" << std::endl;
+  std::cout << "#000759349" << std::endl;
+  std::cout << "Alex Nordhausen" << std::endl;
 
+   Roster classRoster;
+   classRoster.printAll();
   // classRoster.add("1", "Alex", "Nordhausen", "anorthhouse@gmail.com",
   // 23, 40, 30, 20, SOFTWARE);
 
-
-  Student student;
-  std::string* studentData = student.getStudentData();
-
-  for(int i = 0; i <= sizeof(studentData); i = i + 1) {
-    std::cout << studentData[i] << std::endl;
-  }
-  //classRoster.printAll();
-  // classRoster.printInvalidEmails();
+  classRoster.printInvalidEmails();
   // loop through classRosterArray and for each element:
 
     // classRoster.printAverageDaysInCourse(/*current_object's student id*/);

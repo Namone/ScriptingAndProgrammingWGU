@@ -23,6 +23,3 @@
     
 // }
 
-// void Roster::remove(std::string studentId) {
-
-// }
