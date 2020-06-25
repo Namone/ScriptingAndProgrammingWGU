@@ -1,4 +1,5 @@
 #pragma once
+#include <list>
 #include "Student.h"
 
 // Create a Roster class (roster.cpp) by doing the following:
@@ -18,18 +19,28 @@
 class Roster
 {
 public:
+	Roster () {
+		Student student;
+		std::string *studentData = student.getStudentData();
+		for (int i = 0; i <= sizeof(studentData); i = i + 1) {
+			std::cout << studentData[i] << std::endl;
+		}
+	}
+
+	~Roster() {
+		
+	}
 	void add(
-		std::string studentId, 
-		std::string firstName, 
-		std::string lastName, 
-		std::string emailAddress, 
-		int age, 
-		int daysInCourse1, 
-		int daysInCourse2, 
-		int daysInCourse3, 
+		std::string studentId,
+		std::string firstName,
+		std::string lastName,
+		std::string emailAddress,
+		int age,
+		int daysInCourse1,
+		int daysInCourse2,
+		int daysInCourse3,
 		DegreeProgram degreeProgram
 	) {
-		std::cout << "In add() function!";
 		// First, create our new student object.
 		Student *student = new Student();
 		student->setStudentId(studentId);
@@ -40,22 +51,47 @@ public:
 		student->setDegreeProgram(degreeProgram);
 
 		std::cout << "Adding student with email: " << student->getEmailAddress() << std::endl;
-	}
-	// void remove(std::string);
-	// void printByDegreeProgram(DegreeProgram degreeProgram);
-	// void printAverageDaysInCourse(std::string studentId);
-	void printAll() { 
-		Student student;
-		std::string* studentData = student.getStudentData();
-		for(int i = 0; i <= sizeof(studentData); i = i + 1) {
-			std::cout << studentData[i] << std::endl;
+		classRosterArray.push_back(student);
+
+		std::cout << "Added student." << std::endl;
+
+		std::list<Student> students = getStudents();
+		std::list<Student>::iterator student;
+		for (student = students.begin(); student != students.end(); student++) {
+			//Print the name of our newly added student.
+			std::cout << student->getStudentFirstName() << std::endl;
+		}
+	};
+	//void remove(std::string studentId) {
+	//	//classRosterArray.remove(studentId);
+	//	for (int i = 0; i <= sizeof(classRosterArray); i = i + 1) {
+	//		std::cout << classRosterArray[i]->getEmailAddress() << std::endl;
+	//	}
+	//};
+	/*void printByDegreeProgram(DegreeProgram degreeProgram) {
+		for (int i = 0; i <= sizeof(classRosterArray); i = i + 1) {
+			std::cout << classRosterArray[i]->getEmailAddress() << std::endl;
+		}
+	};*/
+	/*void printAverageDaysInCourse(std::string studentId) {
+		for (int i = 0; i <= sizeof(classRosterArray); i = i + 1) {
+			std::cout << classRosterArray[i]->getEmailAddress() << std::endl;
+		}
+	};*/
+	void printAll() {
+		std::list<Student> students = getStudents();
+		std::list<Student>::iterator student;
+		for (student = students.begin(); student != students.end(); student++) {
+			//Print the name of our newly added student.
+			std::cout << student->getStudentFirstName() << std::endl;
 		}
 	};
 	void printInvalidEmails() {
 		Student student;
 		std::string* studentData = student.getStudentData();
-		for(int i = 0; i <= sizeof(studentData); i = i + 1) {
+		for (int i = 0; i <= sizeof(studentData); i = i + 1) {
 			bool isValid = this->isValidEmail(studentData[i]);
+			std::cout << studentData[i] << std::endl;
 			std::cout << isValid << std::endl;
 		}
 	};
@@ -75,9 +111,9 @@ public:
 		return true;
 	};
 	
-	Student* getStudents() { return classRosterArray; };
-	void setStudents(Student* newStudents) { classRosterArray = newStudents; };
+	std::list<Student> getStudents() { return classRosterArray; };
+	void setStudents(std::list<Student> newStudents) { classRosterArray = newStudents; };
 protected:
-	Student* classRosterArray;
+	std::list<Student> classRosterArray;
 };
 

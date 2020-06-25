@@ -22,9 +22,9 @@ class Student
 {
 public:
 	// Constructor
-	// Student();
+	//Student();
 	// // Deconstructor
-	// ~Student();
+	//~Student();
 	// Our accessors for integer variables
 	std::string getStudentId() { return id; };
 	int getStudentAge() { return age; };
