@@ -49,6 +49,25 @@ std::vector<std::string> explode(const std::string &delimiter, const std::string
   return resultArray;
 }
 
+void addAllStudents(std::string *studentData, Roster &classRoster) {
+  for(int i = 0; i <= sizeof(studentData); i = i + 1) {
+    std::vector<std::string> explodedData = explode(",", studentData[i]);
+    
+    std::string studentId = explodedData[0];
+    std::string firstName = explodedData[1];
+    std::string lastName = explodedData[2];
+    std::string email = explodedData[3];
+    int days1 = std::stoi(explodedData[4]);
+    int days2 = std::stoi(explodedData[5]);
+    int days3 = std::stoi(explodedData[6]);
+    int days4 = std::stoi(explodedData[7]);
+    DegreeProgram degreeProgram = degreeProgramMap()[explodedData[8]];
+  
+   classRoster.add(studentId, firstName, lastName, email, days1, days2, days3, days4, degreeProgram);
+  }
+  return;
+}
+
 int main() {
   std::cout << "Scripting and Programming - Applications – C867" << std::endl;
   std::cout << "C++" << std::endl;
@@ -60,42 +79,11 @@ int main() {
 
   Student student;
   std::string *studentData = student.getStudentData();
-  std::vector<std::string> data;
-
-// A1
-// John
-// Smith
-// John1989@gmail.com
-// 20
-// 30
-// 35
-// 40
-// SECURITY
-  for(int i = 0; i <= sizeof(studentData); i = i + 1) {
-    std::vector<std::string> explodedData = explode(",", studentData[i]);
-    std::vector<std::string>::iterator explodedIterator;
-    
-    std::string studentId;
-    std::string firstName;
-    std::string lastName;
-    std::string email;
-    int days1;
-    int days2;
-    int days3;
-    int days4;
-    DegreeProgram degreeProgram;
+  addAllStudents(studentData, classRoster);
   
-    for(int i = 0; i < explodedData.size(); ++i) {
-      std::cout << i << std::endl;
-      std::cout << explodedData[i] << std::endl;
-    }
-
-   // classRoster.add(studentId, firstName, lastName, email, days1, days2, days3, days4, degreeProgram);
-    std::cout << "============" << std::endl;
-  }
-
   //classRoster.printInvalidEmails();
 
+  classRoster.printByDegreeProgram(SOFTWARE);
   std::list<Student> students = classRoster.getStudents();
 	std::list<Student>::iterator studentIterator;
 

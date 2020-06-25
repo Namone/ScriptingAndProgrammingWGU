@@ -33,7 +33,7 @@ public:
 	// Our accessors for our string variables
 	std::string getStudentFirstName() { return firstName; };
 	std::string getStudentLastName() { return lastName; };
-	std::string getDegreeProgram() { return degreeProgram; };
+	DegreeProgram getDegreeProgram() { return degreeProgram; };
 	std::string getEmailAddress() { return emailAddress; }
 	std::string* getStudentData() { return studentData; };
 
@@ -56,7 +56,7 @@ private:
 	// Declare our string variables
 	std::string firstName;
 	std::string lastName;
-	std::string degreeProgram;
+	DegreeProgram degreeProgram;
 	std::string emailAddress;
 	std::string studentData[5] = { 
 		"A1,John,Smith,John1989@gmail.com,20,30,35,40,SECURITY", 

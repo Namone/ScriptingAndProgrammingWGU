@@ -52,27 +52,25 @@ public:
 
 		std::cout << "Adding student with email: " << student.getEmailAddress() << std::endl;
 		classRosterArray.push_back(student);
-
-		std::cout << "Added student." << std::endl;
-
+	};
+	// void remove(std::string studentId) {
+	// 	//classRosterArray.remove(studentId);
+	// 	for (int i = 0; i <= sizeof(classRosterArray); i = i + 1) {
+	// 		std::cout << classRosterArray[i]->getEmailAddress() << std::endl;
+	// 	}
+	// };
+	void printByDegreeProgram(DegreeProgram degreeProgram) {
 		std::list<Student> students = getStudents();
-		std::list<Student>::iterator studentIterator;
-		for (studentIterator = students.begin(); studentIterator != students.end(); studentIterator++) {
-			//Print the name of our newly added student.
-			std::cout << studentIterator->getStudentFirstName() << std::endl;
+		std::list<Student>::iterator student;
+		for (student = students.begin(); student != students.end(); student++) {
+			if (degreeProgram == student->getDegreeProgram()) {
+				continue;
+			}
+
+			//Print the name of our student by degree program.
+			std::cout << student->getStudentFirstName() + " " + student->getStudentLastName() << std::endl;
 		}
 	};
-	//void remove(std::string studentId) {
-	//	//classRosterArray.remove(studentId);
-	//	for (int i = 0; i <= sizeof(classRosterArray); i = i + 1) {
-	//		std::cout << classRosterArray[i]->getEmailAddress() << std::endl;
-	//	}
-	//};
-	/*void printByDegreeProgram(DegreeProgram degreeProgram) {
-		for (int i = 0; i <= sizeof(classRosterArray); i = i + 1) {
-			std::cout << classRosterArray[i]->getEmailAddress() << std::endl;
-		}
-	};*/
 	/*void printAverageDaysInCourse(std::string studentId) {
 		for (int i = 0; i <= sizeof(classRosterArray); i = i + 1) {
 			std::cout << classRosterArray[i]->getEmailAddress() << std::endl;
