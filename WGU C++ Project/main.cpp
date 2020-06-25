@@ -72,7 +72,7 @@ int main() {
   std::cout << "Scripting and Programming - Applications – C867" << std::endl;
   std::cout << "C++" << std::endl;
   std::cout << "#000759349" << std::endl;
-  std::cout << "Alex Nordhausen" << std::endl;
+  std::cout << "Alex Nordhausen" << "\n\n";
 
   Roster classRoster;
   classRoster.printAll();
@@ -83,10 +83,8 @@ int main() {
   
   //classRoster.printInvalidEmails();
 
-  classRoster.printByDegreeProgram(SOFTWARE);
   std::list<Student> students = classRoster.getStudents();
 	std::list<Student>::iterator studentIterator;
-
   // loop through classRosterArray and for each element:
   for (studentIterator = students.begin(); studentIterator != students.end(); studentIterator++) {
     //Print the name of our newly added student.
@@ -103,4 +101,6 @@ int main() {
 
   // Implement the destructor to release the memory that was allocated dynamically in Roster.
   std::cout << "Ending Rosterizier." << std::endl;
+
+  return 0; 
 }

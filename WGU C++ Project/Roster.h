@@ -19,17 +19,6 @@
 class Roster
 {
 public:
-	Roster () {
-		Student student;
-		std::string *studentData = student.getStudentData();
-		for (int i = 0; i <= sizeof(studentData); i = i + 1) {
-			std::cout << studentData[i] << std::endl;
-		}
-	}
-
-	~Roster() {
-		
-	}
 	void add(
 		std::string studentId,
 		std::string firstName,
@@ -77,12 +66,12 @@ public:
 		}
 	};*/
 	void printAll() {
-		std::list<Student> students = getStudents();
-		std::list<Student>::iterator student;
-		for (student = students.begin(); student != students.end(); student++) {
-			//Print the name of our newly added student.
-			std::cout << student->getStudentFirstName() << std::endl;
+		Student student;
+		std::string *studentData = student.getStudentData();
+		for (int i = 0; i <= sizeof(studentData); i = i + 1) {
+			std::cout << studentData[i] << std::endl;
 		}
+		return;
 	};
 	void printInvalidEmails() {
 		Student student;
