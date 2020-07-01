@@ -21,10 +21,7 @@
 class Student
 {
 public:
-	// Constructor
-	//Student();
-	// // Deconstructor
-	//~Student();
+	static const int size = 3;
 	// Our accessors for integer variables
 	std::string getStudentId() { return id; };
 	int getStudentAge() { return age; };
@@ -39,21 +36,25 @@ public:
 	// Our mutators for integer variables
 	void setStudentId(std::string studentId) { id = studentId; };
 	void setStudentAge(int studentAge) { age = studentAge; };
-	//void setNumberOfDaysToComplete(int[5] updatedNumberOfDays) { numberOfDaysToComplete = updatedNumberOfDays; };
 
+	// https://stackoverflow.com/questions/55192622/c-setters-and-getters-for-arrays
 	void setStudentFirstName(std::string studentFirstName) { firstName = studentFirstName; };
 	void setStudentLastName(std::string studentLastName) { lastName = studentLastName; };
 	void setEmailAddress(std::string studentEmailAddress) { emailAddress = studentEmailAddress; };
 	void setDegreeProgram(DegreeProgram studentDegreeProgram) { degreeProgram = studentDegreeProgram; };
-	// Our mutators for string variables
+	void setNumberOfDaysToComplete(int* numOfDays) {
+		for(unsigned int i = 0; i < size; i++) {
+			numberOfDaysToComplete[i] = numOfDays[i];
+		}
+	};
 private:
-	// Declare our integer variables
-	std::string id;
 	int age;
-	int numberOfDaysToComplete[5];
-	// Declare our string variables
+	int numberOfDaysToComplete[size];
+
+	std::string id;
 	std::string firstName;
 	std::string lastName;
-	DegreeProgram degreeProgram;
 	std::string emailAddress;
+
+	DegreeProgram degreeProgram;
 };

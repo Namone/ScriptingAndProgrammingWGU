@@ -40,6 +40,14 @@ public:
 		student.setEmailAddress(emailAddress);
 		student.setDegreeProgram(degreeProgram);
 
+		int daysInCourse[] = {
+			daysInCourse1,
+			daysInCourse2,
+			daysInCourse3
+		};
+
+		student.setNumberOfDaysToComplete(daysInCourse);
+
 		std::cout << "Adding student with email: " << student.getEmailAddress() << std::endl;
 		classRosterArray.push_back(student);
 	};
@@ -68,10 +76,11 @@ public:
 	};*/
 	void printAll(std::string *studentData, int length) {
 		for (unsigned int i = 0; i <= length; i++) {
-			std::cout << studentData[i].data() << std::endl;
+			printf("%s \n", studentData[i].data());
 		}
 	};
 	void printInvalidEmails() {
+		printf("\nPrinting invalid e-mails from class roster:\n");
 		std::list<Student>::iterator currentStudent;
 		for(currentStudent = classRosterArray.begin(); currentStudent != classRosterArray.end(); currentStudent++) {
 			bool isValid = isValidEmail(currentStudent->getEmailAddress());
