@@ -24,7 +24,7 @@
 void addAllStudents(std::string *studentData, Roster &classRoster) {
   for(int i = 0; i <= sizeof(studentData); i = i + 1) {
     std::vector<std::string> explodedData = explode(",", studentData[i]);
-    
+
     std::string studentId = explodedData[0];
     std::string firstName = explodedData[1];
     std::string lastName = explodedData[2];
@@ -34,7 +34,7 @@ void addAllStudents(std::string *studentData, Roster &classRoster) {
     int days3 = std::stoi(explodedData[6]);
     int days4 = std::stoi(explodedData[7]);
     DegreeProgram degreeProgram = degreeProgramMap()[explodedData[8]];
-  
+
    classRoster.add(studentId, firstName, lastName, email, days1, days2, days3, days4, degreeProgram);
   }
   return;
@@ -45,11 +45,19 @@ int main() {
   Roster classRoster;
 
   printClassInfo();
-  classRoster.printAll();
- 
-  std::string *studentData = student.getStudentData();
-  addAllStudents(studentData, classRoster);
-  
+  std::string studentData[] = {
+    "A1,John,Smith,John1989@gmail.com,20,30,35,40,SECURITY",
+    "A2,Suzan,Erickson,Erickson_1990@gmailcom,19,50,30,40,NETWORK",
+    "A3,Jack,Napoli,The_lawyer99yahoo.com,19,20,40,33,SOFTWARE",
+    "A4,Erin,Black,Erin.black@comcast.net,22,50,58,40,SECURITY",
+    "A5,Alex,Nordhausen,anorthhouse@gmail.com,23,40,24,32,SOFTWARE"
+  };
+
+  int length = sizeof(studentData) / sizeof(studentData[0]);
+  classRoster.printAll(studentData, length);
+
+  //addAllStudents(studentData, classRoster);
+
   classRoster.printInvalidEmails();
 
   std::list<Student> students = classRoster.getStudents();
@@ -64,12 +72,12 @@ int main() {
     // classRoster.remove("A3");
     // classRoster.printAll();
     // classRoster.remove("A3");
-  }    
+  }
 
   // expected: the above line should print a message saying such a student with this ID was not found.
 
   // Implement the destructor to release the memory that was allocated dynamically in Roster.
   std::cout << "Ending Rosterizier." << std::endl;
 
-  return 0; 
+  return 0;
 }
