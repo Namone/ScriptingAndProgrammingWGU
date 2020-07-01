@@ -55,7 +55,7 @@ public:
 		std::list<Student> students = getStudents();
 		std::list<Student>::iterator student;
 		for (student = students.begin(); student != students.end(); student++) {
-			if (studentId == student->getStudentId()) {
+			if (studentId != student->getStudentId()) {
 				continue;
 			}
 
@@ -76,7 +76,7 @@ public:
 			}
 
 			// Print the name of our student by degree program.
-			std::cout << student->getStudentFirstName() + " " + student->getStudentLastName() << std::endl;
+			std::cout << "PRINTED BY DEGREE PROGRAM: " << student->getStudentFirstName() + " " + student->getStudentLastName() << std::endl;
 		}
 	};
 	void printAverageDaysInCourse(std::string studentId) {
@@ -84,15 +84,12 @@ public:
 		std::list<Student>::iterator student;
 		for (student = students.begin(); student != students.end(); student++)
 		{
-			int averageDaysInCourse = student->getNumberOfDaysToComplete();
+			int* averageDaysInCourse = student->getNumberOfDaysToComplete();
 
 			int sum = 0;
 			int avg = 0;
 			for(unsigned int i = 0; i < student->size; i++) {
-				// Print the name of our student by degree program.
-				int daysInCourse = averageDaysInCourse;
-				std::cout << daysInCourse << std::endl;
-				sum = sum + daysInCourse;
+				sum = sum + averageDaysInCourse[i];
 			}
 			avg = sum / student->size;
 			std::cout << student->getStudentFirstName() + ": " << avg << std::endl;

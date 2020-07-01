@@ -25,7 +25,7 @@ public:
 	// Our accessors for integer variables
 	std::string getStudentId() { return id; };
 	int getStudentAge() { return age; };
-	int getNumberOfDaysToComplete() { return numberOfDaysToComplete[size]; };
+	int* getNumberOfDaysToComplete() { return numberOfDaysToComplete; };
 
 	// Our accessors for our string variables
 	std::string getStudentFirstName() { return firstName; };
