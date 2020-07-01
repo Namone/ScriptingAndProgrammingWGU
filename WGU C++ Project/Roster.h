@@ -84,13 +84,15 @@ public:
 		std::list<Student>::iterator student;
 		for (student = students.begin(); student != students.end(); student++)
 		{
-			int* averageDaysInCourse = &student->getNumberOfDaysToComplete();
+			int averageDaysInCourse = student->getNumberOfDaysToComplete();
 
 			int sum = 0;
 			int avg = 0;
 			for(unsigned int i = 0; i < student->size; i++) {
 				// Print the name of our student by degree program.
-				sum = sum + averageDaysInCourse[i];
+				int daysInCourse = averageDaysInCourse;
+				std::cout << daysInCourse << std::endl;
+				sum = sum + daysInCourse;
 			}
 			avg = sum / student->size;
 			std::cout << student->getStudentFirstName() + ": " << avg << std::endl;
