@@ -51,12 +51,22 @@ public:
 		std::cout << "Adding student with email: " << student.getEmailAddress() << std::endl;
 		classRosterArray.push_back(student);
 	};
-	// void remove(std::string studentId) {
-	// 	//classRosterArray.remove(studentId);
-	// 	for (int i = 0; i <= sizeof(classRosterArray); i = i + 1) {
-	// 		std::cout << classRosterArray[i]->getEmailAddress() << std::endl;
-	// 	}
-	// };
+	void remove(std::string studentId) {
+		std::list<Student> students = getStudents();
+		std::list<Student>::iterator student;
+		for (student = students.begin(); student != students.end(); student++) {
+			if (studentId == student->getStudentId()) {
+				continue;
+			}
+
+			// https://stackoverflow.com/questions/29378849/remove-object-from-c-list
+			// Print out who we are about to remove.
+			std::cout << "Removing " + student->getStudentFirstName() << std::endl;
+
+			Student studentToRemove;
+			students.remove(studentToRemove);
+		}
+	};
 	void printByDegreeProgram(DegreeProgram degreeProgram) {
 		std::list<Student> students = getStudents();
 		std::list<Student>::iterator student;
@@ -65,15 +75,27 @@ public:
 				continue;
 			}
 
-			//Print the name of our student by degree program.
+			// Print the name of our student by degree program.
 			std::cout << student->getStudentFirstName() + " " + student->getStudentLastName() << std::endl;
 		}
 	};
-	/*void printAverageDaysInCourse(std::string studentId) {
-		for (int i = 0; i <= sizeof(classRosterArray); i = i + 1) {
-			std::cout << classRosterArray[i]->getEmailAddress() << std::endl;
+	void printAverageDaysInCourse(std::string studentId) {
+		std::list<Student> students = getStudents();
+		std::list<Student>::iterator student;
+		for (student = students.begin(); student != students.end(); student++)
+		{
+			int* averageDaysInCourse = &student->getNumberOfDaysToComplete();
+
+			int sum = 0;
+			int avg = 0;
+			for(unsigned int i = 0; i < student->size; i++) {
+				// Print the name of our student by degree program.
+				sum = sum + averageDaysInCourse[i];
+			}
+			avg = sum / student->size;
+			std::cout << student->getStudentFirstName() + ": " << avg << std::endl;
 		}
-	};*/
+	};
 	void printAll(std::string *studentData, int length) {
 		for (unsigned int i = 0; i <= length; i++) {
 			printf("%s \n", studentData[i].data());

@@ -25,7 +25,7 @@ public:
 	// Our accessors for integer variables
 	std::string getStudentId() { return id; };
 	int getStudentAge() { return age; };
-	int* getNumberOfDaysToComplete() { return numberOfDaysToComplete; };
+	int &getNumberOfDaysToComplete() { return numberOfDaysToComplete; };
 
 	// Our accessors for our string variables
 	std::string getStudentFirstName() { return firstName; };
@@ -47,6 +47,8 @@ public:
 			numberOfDaysToComplete[i] = numOfDays[i];
 		}
 	};
+	bool operator==(const Student &s) const { return id == s.id; }
+	bool operator!=(const Student &s) const { return !operator==(s); }
 private:
 	int age;
 	int numberOfDaysToComplete[size];

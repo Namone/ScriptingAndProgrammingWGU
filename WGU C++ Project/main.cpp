@@ -63,14 +63,12 @@ int main() {
 	std::list<Student>::iterator studentIterator;
   // loop through classRosterArray and for each element:
   for (studentIterator = students.begin(); studentIterator != students.end(); studentIterator++) {
-    //Print the name of our newly added student.
-    //std::cout << studentIterator->getStudentFirstName() << std::endl;
-
-    // classRoster.printAverageDaysInCourse(/*current_object's student id*/);
-    // classRoster.printByDegreeProgram(SOFTWARE);
-    // classRoster.remove("A3");
-    // classRoster.printAll();
-    // classRoster.remove("A3");
+    std::cout << studentIterator->getStudentFirstName() << std::endl;
+    classRoster.printAverageDaysInCourse(studentIterator->getStudentId());
+    classRoster.printByDegreeProgram(SOFTWARE);
+    classRoster.remove("A3");
+    classRoster.printAll(studentData, length);
+    classRoster.remove("A3");
   }
 
   // expected: the above line should print a message saying such a student with this ID was not found.
