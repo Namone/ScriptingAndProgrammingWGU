@@ -62,9 +62,9 @@ public:
 			// https://stackoverflow.com/questions/29378849/remove-object-from-c-list
 			// Print out who we are about to remove.
 			std::cout << "Removing " + student->getStudentFirstName() << std::endl;
+			students.remove(*student);
 
-			Student studentToRemove;
-			students.remove(studentToRemove);
+			setStudents(students);
 		}
 	};
 	void printByDegreeProgram(DegreeProgram degreeProgram) {
@@ -82,8 +82,7 @@ public:
 	void printAverageDaysInCourse(std::string studentId) {
 		std::list<Student> students = getStudents();
 		std::list<Student>::iterator student;
-		for (student = students.begin(); student != students.end(); student++)
-		{
+		for (student = students.begin(); student != students.end(); student++) {
 			int* averageDaysInCourse = student->getNumberOfDaysToComplete();
 
 			int sum = 0;
@@ -95,9 +94,19 @@ public:
 			std::cout << student->getStudentFirstName() + ": " << avg << std::endl;
 		}
 	};
-	void printAll(std::string *studentData, int length) {
-		for (unsigned int i = 0; i <= length; i++) {
-			printf("%s \n", studentData[i].data());
+	void printAll() {
+		std::list<Student> students = getStudents();
+		std::list<Student>::iterator student;
+		for (student = students.begin(); student != students.end(); student++) {
+			std::cout << student->getStudentId() << ",";
+			std::cout << student->getStudentFirstName() << ",";
+			std::cout << student->getStudentLastName() << ",";
+			std::cout << student->getEmailAddress() << ",";
+			std::cout << student->getStudentAge() << ",";
+			std::cout << *student->getNumberOfDaysToComplete() << ",";
+			std::cout << student->getDegreeProgram() << std::endl;
+			//printf("%d,", *student->getNumberOfDaysToComplete());
+			//printf("%s", student->getDegreeProgram());
 		}
 	};
 	void printInvalidEmails() {

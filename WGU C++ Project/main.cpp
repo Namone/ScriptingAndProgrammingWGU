@@ -53,21 +53,21 @@ int main() {
   };
 
   int length = sizeof(studentData) / sizeof(studentData[0]);
-  classRoster.printAll(studentData, length);
 
   addAllStudents(studentData, classRoster, length);
+  std::list<Student> students = classRoster.getStudents();
 
+  classRoster.printAll();
   classRoster.printInvalidEmails();
 
-  std::list<Student> students = classRoster.getStudents();
 	std::list<Student>::iterator studentIterator;
   // loop through classRosterArray and for each element:
   for (studentIterator = students.begin(); studentIterator != students.end(); studentIterator++) {
-    std::cout << studentIterator->getStudentFirstName() << std::endl;
     classRoster.printAverageDaysInCourse(studentIterator->getStudentId());
     classRoster.printByDegreeProgram(SOFTWARE);
     classRoster.remove("A3");
-    classRoster.printAll(studentData, length);
+    classRoster.setStudents(classRoster.getStudents());
+    classRoster.printAll();
     classRoster.remove("A3");
   }
 
