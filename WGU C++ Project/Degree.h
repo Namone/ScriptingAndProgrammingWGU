@@ -1,3 +1,6 @@
+#ifndef DEGREE_H
+#define DEGREE_H
+
 #pragma once
 #include <map>
 #include <string>
@@ -23,7 +26,7 @@ struct degreeProgramMap : public std::map<std::string, DegreeProgram>
 };
 
 // Overload << operator to allow us to print Enum value as a string.
-std::ostream &operator<<(std::ostream &out, const DegreeProgram degreeProgram) {
+static std::ostream &operator<<(std::ostream &out, const DegreeProgram degreeProgram) {
     const char *s = 0;
     #define PROCESS_VAL(p) \
     case (p):          \
@@ -38,3 +41,4 @@ std::ostream &operator<<(std::ostream &out, const DegreeProgram degreeProgram) {
 
     return out << s;
 }
+#endif

@@ -1,12 +1,17 @@
+#ifndef STUDENT_H
+#define STUDENT_H
+
 #pragma once
 #include <string>
+#include <iostream>
 #include "Degree.h"
 
+using namespace std;
 // For the Student class, do the following:
 // 1.  Create the class Student  in the files student.h and student.cpp, which includes each of the following variables:
 // •  student ID
 // •  first name
-// •   last name
+// •  last name
 // •  email address
 // •  age
 // •  array of number of days to complete each course
@@ -22,6 +27,17 @@ class Student
 {
 public:
 	static const int size = 3;
+
+	Student(std::string studentId,
+					std::string firstName,
+					std::string lastName,
+					std::string emailAddress,
+					int age,
+					int daysInCourse1,
+					int daysInCourse2,
+					int daysInCourse3,
+					DegreeProgram degreeProgram);
+	~Student();
 	// Our accessors for integer variables
 	std::string getStudentId() { return id; };
 	int getStudentAge() { return age; };
@@ -37,7 +53,6 @@ public:
 	void setStudentId(std::string studentId) { id = studentId; };
 	void setStudentAge(int studentAge) { age = studentAge; };
 
-	// https://stackoverflow.com/questions/55192622/c-setters-and-getters-for-arrays
 	void setStudentFirstName(std::string studentFirstName) { firstName = studentFirstName; };
 	void setStudentLastName(std::string studentLastName) { lastName = studentLastName; };
 	void setEmailAddress(std::string studentEmailAddress) { emailAddress = studentEmailAddress; };
@@ -49,22 +64,8 @@ public:
 	};
 	bool operator==(const Student &s) const { return id == s.id; }
 	bool operator!=(const Student &s) const { return !operator==(s); }
-	void print() {
-		std::cout << id << "\t";
-		std::cout << "First name: " << firstName << "\t";
-		std::cout << "Last name: " << lastName << "\t";
-		std::cout << "E-mail address: " << emailAddress << "\t";
-		std::cout << "Age: " << age << "\t";
-		std::cout << "daysInCourse: " << "{";
-		for(unsigned int i = 0; i < size; i++) {
-			std::cout << numberOfDaysToComplete[i];
-			if(i != (size - 1)) {
-				std::cout << ",";
-			}
-		}
-		std::cout << "}" << "\t";
-		std::cout << "Degree program: " << degreeProgram << std::endl;
-	};
+
+	void print();
 private:
 	int age;
 	int numberOfDaysToComplete[size];
@@ -76,3 +77,4 @@ private:
 
 	DegreeProgram degreeProgram;
 };
+#endif

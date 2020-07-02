@@ -1,9 +1,12 @@
+#ifndef UTIL_H
+#define UTIL_H
+
 #pragma once
 #include <iostream>
 #include <vector>
 
 // "Explodes" a string into an array based on a delimiter.
-std::vector<std::string> explode(const std::string &delimiter, const std::string &stringToExplode) {
+static std::vector<std::string> explode(const std::string &delimiter, const std::string &stringToExplode) {
   std::vector<std::string> resultArray;
   int stringLength = stringToExplode.length();
   int delimiterLength = delimiter.length();
@@ -32,7 +35,7 @@ std::vector<std::string> explode(const std::string &delimiter, const std::string
 }
 
 // Determine if a given input string is a valid e-mail address.
-bool isValidEmail(std::string input) {
+static bool isValidEmail(std::string input) {
     size_t at = input.find('@');
     if (at == std::string::npos) {
         // std::cout << "Missing @ symbol\n";
@@ -48,7 +51,7 @@ bool isValidEmail(std::string input) {
     return true;
 };
 
-void printClassInfo() {
+static void printClassInfo() {
   std::cout << "Scripting and Programming - Applications – C867" << std::endl;
   std::cout << "C++" << std::endl;
   std::cout << "#000759349" << std::endl;
@@ -56,3 +59,4 @@ void printClassInfo() {
 
   return;
 }
+#endif

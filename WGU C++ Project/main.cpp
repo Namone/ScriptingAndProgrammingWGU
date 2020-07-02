@@ -42,7 +42,6 @@ void addAllStudents(std::string *studentData, Roster &classRoster, int length) {
 }
 
 int main() {
-  Student student;
   Roster classRoster;
 
   printClassInfo();
@@ -72,10 +71,6 @@ int main() {
     classRoster.remove("A3", students);
   }
 
-  // expected: the above line should print a message saying such a student with this ID was not found.
-
-  // Implement the destructor to release the memory that was allocated dynamically in Roster.
   std::cout << "Ending Rosterizier." << std::endl;
-
   return 0;
 }
