@@ -1,8 +1,8 @@
 #pragma once
 #include <list>
 #include <iostream>
-#include "Student.h"
-#include "Util.h"
+#include <string>
+
 		// Create a Roster class (roster.cpp) by doing the following:
 		// 1.  Create an array of pointers, classRosterArray, to hold the data provided in the “studentData Table.”
 		// 2.  Create a student object for each student in the data table and populate classRosterArray.
@@ -17,7 +17,7 @@
 		// Note: A valid email should include an at sign ('@') and period ('.') and should not include a space (' ').
 		// f.  public void printByDegreeProgram(DegreeProgram degreeProgram) that prints out student information for a degree program specified by an enumerated type.
 
-		class Roster
+class Roster
 {
 public:
 	void add(
@@ -51,23 +51,33 @@ public:
 		std::cout << "Adding student with email: " << student.getEmailAddress() << std::endl;
 		classRosterArray.push_back(student);
 	};
-	void remove(std::string studentId) {
-		std::list<Student> students = getStudents();
+	void remove(std::string studentId, std::list<Student> &students) {
 		std::list<Student>::iterator student;
-		for (student = students.begin(); student != students.end(); student++) {
-			if (studentId != student->getStudentId()) {
-				continue;
+		bool wasRemoved = false;
+		for (student = students.begin(); student != students.end();) {
+			if (studentId == student->getStudentId()) {
+				// Print out who we are about to remove.
+				std::cout << "Removing " + student->getStudentFirstName() << std::endl;
+				student = students.erase(student);
+				setStudents(students);
+				wasRemoved = true;
+			}
+			else {
+				++student;
 			}
 
 			// https://stackoverflow.com/questions/29378849/remove-object-from-c-list
-			// Print out who we are about to remove.
-			std::cout << "Removing " + student->getStudentFirstName() << std::endl;
-			students.remove(*student);
 
-			setStudents(students);
 		}
+
+		if(!wasRemoved) {
+			std::cout << "The student with ID " << studentId << " no longer exists and was not removed/erased." << std::endl;
+		}
+
+		std::cout << std::endl;
 	};
 	void printByDegreeProgram(DegreeProgram degreeProgram) {
+		std::cout << "Printing students by degree program " << degreeProgram << ":" << std::endl;
 		std::list<Student> students = getStudents();
 		std::list<Student>::iterator student;
 		for (student = students.begin(); student != students.end(); student++) {
@@ -76,13 +86,19 @@ public:
 			}
 
 			// Print the name of our student by degree program.
-			std::cout << "PRINTED BY DEGREE PROGRAM: " << student->getStudentFirstName() + " " + student->getStudentLastName() << std::endl;
+			std::cout << student->getStudentFirstName() + " " + student->getStudentLastName() << std::endl;
 		}
+
+		std::cout << std::endl;
 	};
 	void printAverageDaysInCourse(std::string studentId) {
+		std::cout << "Printing average days in course for student " << studentId + ": " << std::endl;
 		std::list<Student> students = getStudents();
 		std::list<Student>::iterator student;
 		for (student = students.begin(); student != students.end(); student++) {
+			if(studentId != student->getStudentId()) {
+				continue;
+			}
 			int* averageDaysInCourse = student->getNumberOfDaysToComplete();
 
 			int sum = 0;
@@ -93,21 +109,17 @@ public:
 			avg = sum / student->size;
 			std::cout << student->getStudentFirstName() + ": " << avg << std::endl;
 		}
+		std::cout << std::endl;
 	};
 	void printAll() {
+		std::cout << "Printing all students:" << std::endl;
 		std::list<Student> students = getStudents();
 		std::list<Student>::iterator student;
 		for (student = students.begin(); student != students.end(); student++) {
-			std::cout << student->getStudentId() << ",";
-			std::cout << student->getStudentFirstName() << ",";
-			std::cout << student->getStudentLastName() << ",";
-			std::cout << student->getEmailAddress() << ",";
-			std::cout << student->getStudentAge() << ",";
-			std::cout << *student->getNumberOfDaysToComplete() << ",";
-			std::cout << student->getDegreeProgram() << std::endl;
-			//printf("%d,", *student->getNumberOfDaysToComplete());
-			//printf("%s", student->getDegreeProgram());
+			student->print();
 		}
+
+		std::cout << std::endl;
 	};
 	void printInvalidEmails() {
 		printf("\nPrinting invalid e-mails from class roster:\n");

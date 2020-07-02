@@ -49,6 +49,22 @@ public:
 	};
 	bool operator==(const Student &s) const { return id == s.id; }
 	bool operator!=(const Student &s) const { return !operator==(s); }
+	void print() {
+		std::cout << id << "\t";
+		std::cout << "First name: " << firstName << "\t";
+		std::cout << "Last name: " << lastName << "\t";
+		std::cout << "E-mail address: " << emailAddress << "\t";
+		std::cout << "Age: " << age << "\t";
+		std::cout << "daysInCourse: " << "{";
+		for(unsigned int i = 0; i < size; i++) {
+			std::cout << numberOfDaysToComplete[i];
+			if(i != (size - 1)) {
+				std::cout << ",";
+			}
+		}
+		std::cout << "}" << "\t";
+		std::cout << "Degree program: " << degreeProgram << std::endl;
+	};
 private:
 	int age;
 	int numberOfDaysToComplete[size];

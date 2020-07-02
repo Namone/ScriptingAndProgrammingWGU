@@ -1,9 +1,10 @@
 #include <iostream>
 #include <vector>
 #include <list>
-#include "Roster.h"
-#include "Degree.h"
 #include "Util.h"
+#include "Degree.h"
+#include "Student.h"
+#include "Roster.h"
 
 // Demonstrate the program’s required functionality by adding a main() function in main.cpp, which will contain the required function calls to achieve the following results:
 // 1.  Print out to the screen, via your application, the course title, the programming language used, your WGU student ID, and your name.
@@ -36,6 +37,7 @@ void addAllStudents(std::string *studentData, Roster &classRoster, int length) {
 
    classRoster.add(studentId, firstName, lastName, email, age, days1, days2, days3, degreeProgram);
   }
+  std::cout << std::endl;
   return;
 }
 
@@ -65,10 +67,9 @@ int main() {
   for (studentIterator = students.begin(); studentIterator != students.end(); studentIterator++) {
     classRoster.printAverageDaysInCourse(studentIterator->getStudentId());
     classRoster.printByDegreeProgram(SOFTWARE);
-    classRoster.remove("A3");
-    classRoster.setStudents(classRoster.getStudents());
+    classRoster.remove("A3", students);
     classRoster.printAll();
-    classRoster.remove("A3");
+    classRoster.remove("A3", students);
   }
 
   // expected: the above line should print a message saying such a student with this ID was not found.
